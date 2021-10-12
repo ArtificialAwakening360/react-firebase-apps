@@ -11,20 +11,7 @@ import PropTypes from 'prop-types';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-<<<<<<< HEAD
-firebase.initializeApp({
-  // your config
-  apiKey: "AIzaSyDk7VMMBwr6bqDsrzbUYGpnthHaMioYe2s",
-  authDomain: "chat-app-15946.firebaseapp.com",
-  projectId: "chat-app-15946",
-  storageBucket: "chat-app-15946.appspot.com",
-  messagingSenderId: "533178884935",
-  appId: "1:533178884935:web:ef9483d776d0107ffe6262",
-  measurementId: "G-P58VBCQ0SY"
-})
-=======
 firebase.initializeApp(configData);
->>>>>>> 48ecc609c7d4f1453d925c5c5dba7e918609ff1e
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
