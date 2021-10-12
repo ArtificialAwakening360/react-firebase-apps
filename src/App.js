@@ -5,19 +5,20 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/analytics';
+import PropTypes from 'prop-types';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp({
   // your config
-  apiKey: "AIzaSyCvsZgSK-CaWV60CIer5zoQ-bFuVThyDlM",
-  authDomain: "superchat-20b4e.firebaseapp.com",
-  projectId: "superchat-20b4e",
-  storageBucket: "superchat-20b4e.appspot.com",
-  messagingSenderId: "943390799882",
-  appId: "1:943390799882:web:d470065f4f7304d092c7f3",
-  measurementId: "G-N8HNZYS71N"
+  apiKey: "AIzaSyDk7VMMBwr6bqDsrzbUYGpnthHaMioYe2s",
+  authDomain: "chat-app-15946.firebaseapp.com",
+  projectId: "chat-app-15946",
+  storageBucket: "chat-app-15946.appspot.com",
+  messagingSenderId: "533178884935",
+  appId: "1:533178884935:web:ef9483d776d0107ffe6262",
+  measurementId: "G-P58VBCQ0SY"
 })
 
 const auth = firebase.auth();
@@ -126,5 +127,8 @@ function ChatMessage(props) {
   </>)
 }
 
+ChatMessage.propTypes = {
+  message: PropTypes.any,
+};
 
 export default App;
