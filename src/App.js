@@ -105,7 +105,6 @@ function ChatRoom() {
   </>)
 }
 
-
 function ChatMessage(props) {
   const { text, uid, photoURL } = props.message;
 
