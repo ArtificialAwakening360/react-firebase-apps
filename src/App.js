@@ -1,37 +1,22 @@
 import React, { useRef, useState } from 'react';
 import './App.css';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import PropTypes from 'prop-types';
+import firebase from 'firebase/app';
 import configData from './firebase-config.json';
 
-import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import 'firebase/analytics';
-import PropTypes from 'prop-types';
-
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp(configData);
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
-const analytics = firebase.analytics();
 
-function App() {
-  const [user] = useAuthState(auth);
-
-  return (
-    <div className="App">
-      <header>
-        <h1>⚛️🔥💬</h1>
-        <SignOut />
-      </header>
-
-      <section>
-        {user ? <ChatRoom /> : <SignIn />}
-      </section>
-
-    </div>
+function SignOut() {
+  return auth.currentUser && (
+    <button type="button" className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
   );
 }
 
@@ -43,15 +28,24 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
+      <button type="button" className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
       <p>Do not violate the community guidelines or you will be banned for life!</p>
     </>
   );
 }
 
-function SignOut() {
-  return auth.currentUser && (
-    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+function ChatMessage(props) {
+  const { text, uid, photoURL } = props.message;
+
+  const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+
+  return (
+    <>
+      <div className={`message ${messageClass}`}>
+        <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} alt="Avatar" />
+        <p>{text}</p>
+      </div>
+    </>
   );
 }
 
@@ -101,23 +95,26 @@ function ChatRoom() {
   );
 }
 
-function ChatMessage(props) {
-  const { text, uid, photoURL } = props.message;
+ChatMessage.propTypes = {
+  message: PropTypes.string.isRequired,
+};
 
-  const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+function App() {
+  const [user] = useAuthState(auth);
 
   return (
-    <>
-      <div className={`message ${messageClass}`}>
-        <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
-        <p>{text}</p>
-      </div>
-    </>
+    <div className="App">
+      <header>
+        <h1>⚛️🔥💬</h1>
+        <SignOut />
+      </header>
+
+      <section>
+        {user ? <ChatRoom /> : <SignIn />}
+      </section>
+
+    </div>
   );
 }
-
-ChatMessage.propTypes = {
-  message: PropTypes.any,
-};
 
 export default App;

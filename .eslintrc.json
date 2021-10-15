@@ -20,5 +20,16 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "no-console": "off",
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "react/jsx-filename-extension": [1, 
+            { 
+                "extensions": [".js", ".jsx"] 
+            }
+        ],
+        "no-param-reassign": ["error", 
+            { "props": false }
+        ]
     }
 }
