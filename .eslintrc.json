@@ -12,7 +12,7 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 12,
+        "ecmaVersion": 13,
         "sourceType": "module"
     },
     "plugins": [
@@ -20,16 +20,11 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "no-console": "off",
+        "no-console":"off",
+        "react/jsx-filename-extension":"off",
+        "no-param-reassign": "off",
         "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": ["error"],
-        "react/jsx-filename-extension": [1, 
-            { 
-                "extensions": [".js", ".jsx"] 
-            }
-        ],
-        "no-param-reassign": ["error", 
-            { "props": false }
-        ]
+        "import/no-unresolved": "off",
+        "react/destructuring-assignment": "off"
     }
 }
