@@ -89,7 +89,7 @@ function ChatRoom() {
 
         <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
 
-        <button type="submit" disabled={!formValue}>🕊️</button>
+        <button type="submit" disabled={!formValue}><span role="img" aria-label="Enter">🕊️</span></button>
 
       </form>
     </>
@@ -106,7 +106,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>⚛️🔥💬</h1>
+        <h1><span role="img" aria-label="Title">⚛️🔥💬</span></h1>
         <SignOut />
       </header>
 
