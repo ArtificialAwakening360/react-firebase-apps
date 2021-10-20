@@ -24,7 +24,7 @@ jobs:
         run: npx install-peerdeps --dev eslint-config-airbnb-base@14.2.1
 
       - name: Run ESLint
-        run: npx eslint .`
+        run: npx eslint .
 
       - name: Run npm build
         run: npm run build
