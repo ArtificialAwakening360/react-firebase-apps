@@ -20,8 +20,11 @@ jobs:
       - name: Install npm
         run: npm install 
 
-      - name: Install and run ESLint
-        uses: stefanoeb/eslint-action@1.0.2
+      - name: Install ESLint
+        run: npx install-peerdeps --dev eslint-config-airbnb-base@14.2.1
+
+      - name: Run ESLint
+        run: npx eslint .`
 
       - name: Run npm build
         run: npm run build
