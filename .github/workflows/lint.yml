@@ -11,12 +11,4 @@ jobs:
    
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Install eslint module
-      run: npm install eslint
-    
-    - name: Initialize ESLint
-      run: npx eslint --init
-      
-    - name: Run ESLint
-      run: eslint . --ext .js,.jsx,.ts,.tsx
+    - uses: stefanoeb/eslint-action@1.0.2
